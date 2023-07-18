@@ -52,11 +52,32 @@ async function getNode(id) {
     const [result] = await pool.query(`
     SELECT * 
     FROM notes
-    WHERE id = ?`,
-    [id]
-    );
-    return result;
+    WHERE id = ?
+    `, [id]);
+    return result[0]
 }
 
-const node_data = await getNode(1);
-console.log(node_data);
+// const node_data = await getNode(7);
+// console.log(node_data);
+
+
+
+
+
+
+
+
+// here we will use insert statement
+async function createNote(title, content) {
+    const [result] = await pool.query(`
+    INSERT INTO notes (title, contents)
+    VALUES (?, ?)
+    `, [title, content]);
+
+    const id = result.insertId
+    return getNode(id)
+    
+}
+
+const result = await createNote('my second note 15','a note about something 15');
+console.log(result);

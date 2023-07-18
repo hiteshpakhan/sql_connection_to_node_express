@@ -15,40 +15,31 @@ const pool = mysql.createPool({
 
 
 // to see all the data
-async function getNotes() {
+export async function getNotes() {
     const [result] = await pool.query("SELECT * FROM notes");
     return result;
 }
 
-const notes_data = await getNotes();
+// const notes_data = await getNotes();
 // console.log(notes_data);
 
 
-
-
-
-
 // get specific data but the wrong way of practice because we are providing the value directly
-// async function getNode(id) {
-//     const [result] = await pool.query(`
-//     SELECT * 
-//     FROM notes
-//     WHERE id = ${id}`
-//     );
-//     return result;
-// }
+export async function getNodeOne(id) {
+    const [result] = await pool.query(`
+    SELECT * 
+    FROM notes
+    WHERE id = ${id}`
+    );
+    return result;
+}
 
-// const node_data = await getNode(1);
+// const node_data = await getNodeOne(1);
 // console.log(node_data);
 
 
-
-
-
-
-
 // get specific data but the currect way of practice because we are providing the value and query seprately
-async function getNode(id) {
+export async function getNode(id) {
     const [result] = await pool.query(`
     SELECT * 
     FROM notes
@@ -61,14 +52,8 @@ async function getNode(id) {
 // console.log(node_data);
 
 
-
-
-
-
-
-
 // here we will use insert statement
-async function createNote(title, content) {
+export async function createNote(title, content) {
     const [result] = await pool.query(`
     INSERT INTO notes (title, contents)
     VALUES (?, ?)
@@ -79,5 +64,5 @@ async function createNote(title, content) {
     
 }
 
-const result = await createNote('my second note 15','a note about something 15');
-console.log(result);
+// const result = await createNote('my second note 15','a note about something 15');
+// console.log(result);

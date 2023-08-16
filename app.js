@@ -27,6 +27,7 @@ app.post("/notes", async (req, res) => {
 
 
 // error handling
+// when we are use the next in the paraneter after req, res then that is the middleware
 app.use((err, req, res, next) => {
     console.error(err.stack)
     res.status(500).send('Something broke!')

@@ -1,3 +1,4 @@
+// importing express
 import  express  from "express";
 
 import { getNotes, getNode, createNote } from "./database.js";

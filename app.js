@@ -38,3 +38,7 @@ app.listen(8080, () => {
     console.log("server is running on port 8080")
 })
 
+
+
+
+// there are also orms like prisma which you can use to communicate with the database withour writing the sql queryes
